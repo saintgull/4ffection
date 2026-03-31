@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4ffection - tour dates</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      background: #000;
+      color: #fff;
+      min-height: 100vh;
+      font-family: 'Cormorant Garamond', serif;
+      background-image: url('website%20wallpaper%20retouches.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      cursor: url('butterfly-closed.png') 24 38, default;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    a, button {
+      cursor: url('butterfly-open.png') 24 24, pointer;
+    }
+
+    header {
+      padding: 4vh 4vw;
+    }
+
+    .title {
+      font-weight: 300;
+      font-size: clamp(1.8rem, 4vw, 3.5rem);
+      letter-spacing: 0.15em;
+      text-transform: lowercase;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .title:hover {
+      opacity: 0.7;
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4vh 4vw;
+    }
+
+    .page-title {
+      font-weight: 300;
+      font-size: clamp(1.4rem, 3vw, 2.5rem);
+      letter-spacing: 0.2em;
+      text-transform: lowercase;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 2vh;
+    }
+
+    .empty-message {
+      font-weight: 300;
+      font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 0.08em;
+      font-style: italic;
+    }
+
+    footer {
+      display: flex;
+      justify-content: center;
+      gap: clamp(20px, 4vw, 48px);
+      padding: 2vh 4vw;
+      flex-shrink: 0;
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      font-size: clamp(0.75rem, 1vw, 0.95rem);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: lowercase;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="title" href="index.html">4ffection</a>
+  </header>
+
+  <div class="content">
+    <h1 class="page-title">tour dates</h1>
+    <p class="empty-message">no dates announced yet — check back soon</p>
+  </div>
+
+  <footer>
+    <a href="index.html">home</a>
+    <a href="mailto:eversince2222@gmail.com">booking</a>
+  </footer>
+
+</body>
+</html>

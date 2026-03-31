@@ -22,6 +22,7 @@
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
+      cursor: url('butterfly-closed.png') 24 38, default;
     }
 
     body {
@@ -29,9 +30,13 @@
       flex-direction: column;
     }
 
+    a, button, input[type="submit"] {
+      cursor: url('butterfly-open.png') 24 24, pointer;
+    }
+
     header {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       padding: 2.5vh 4vw;
       flex-shrink: 0;
@@ -43,11 +48,6 @@
       letter-spacing: 0.15em;
       text-transform: lowercase;
       color: #fff;
-    }
-
-    .logo {
-      width: clamp(60px, 8vw, 120px);
-      height: auto;
     }
 
     .albums {
@@ -97,18 +97,104 @@
       grid-column-start: 2;
     }
 
-    footer {
+    /* Navigation links */
+    .nav-links {
       display: flex;
       justify-content: center;
       gap: clamp(20px, 4vw, 48px);
-      padding: 2vh 4vw;
+      padding: 2vh 4vw 1vh;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      font-size: clamp(0.75rem, 1vw, 0.95rem);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: lowercase;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    /* Newsletter */
+    .newsletter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2vh 4vw 3vh;
+    }
+
+    .newsletter-label {
+      font-weight: 300;
+      font-size: clamp(0.7rem, 1vw, 0.85rem);
+      letter-spacing: 0.15em;
+      text-transform: lowercase;
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 8px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0;
+    }
+
+    .newsletter-form input[type="email"] {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-right: none;
+      color: #fff;
+      padding: 8px 14px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      outline: none;
+      width: 220px;
+      cursor: url('butterfly-closed.png') 24 38, text;
+    }
+
+    .newsletter-form input[type="email"]::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .newsletter-form input[type="email"]:focus {
+      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .newsletter-form button {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.6);
+      padding: 8px 16px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: lowercase;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    /* Footer social links */
+    footer {
+      display: flex;
+      justify-content: center;
+      gap: clamp(16px, 3vw, 36px);
+      padding: 1vh 4vw 2.5vh;
       flex-shrink: 0;
+      flex-wrap: wrap;
     }
 
     footer a {
       color: rgba(255, 255, 255, 0.5);
       text-decoration: none;
-      font-size: clamp(0.75rem, 1vw, 0.95rem);
+      font-size: clamp(0.7rem, 0.9vw, 0.85rem);
       font-weight: 400;
       letter-spacing: 0.12em;
       text-transform: lowercase;
@@ -146,8 +232,14 @@
         justify-self: center;
       }
 
-      footer {
-        padding: 1.5vh 5vw;
+      .nav-links, footer {
+        gap: 16px;
+        padding-left: 5vw;
+        padding-right: 5vw;
+      }
+
+      .newsletter-form input[type="email"] {
+        width: 160px;
       }
     }
   </style>
@@ -156,7 +248,6 @@
 
   <header>
     <span class="title">4ffection</span>
-    <img class="logo" src="logo-outline.svg" alt="4ffection logo">
   </header>
 
   <section class="albums">
@@ -210,11 +301,36 @@
     </div>
   </section>
 
+  <nav class="nav-links">
+    <a href="tour.html">tour dates</a>
+    <a href="mailto:eversince2222@gmail.com">booking</a>
+  </nav>
+
+  <div class="newsletter">
+    <div class="newsletter-label">stay in touch</div>
+    <form class="newsletter-form" onsubmit="return handleSubscribe(event)">
+      <input type="email" placeholder="your email" required>
+      <button type="submit">subscribe</button>
+    </form>
+  </div>
+
   <footer>
-    <a href="https://x.com/eversince222" target="_blank" rel="noopener">twitter</a>
-    <a href="https://soundcloud.com/4ffectionless" target="_blank" rel="noopener">soundcloud</a>
-    <a href="https://www.instagram.com/_4ffection/" target="_blank" rel="noopener">instagram</a>
+    <a href="https://instagram.com/l4motrigine" target="_blank" rel="noopener">instagram</a>
+    <a href="https://tiktok.com/@4ffectionless" target="_blank" rel="noopener">tiktok</a>
+    <a href="https://www.soundcloud.com/4ffectionless" target="_blank" rel="noopener">soundcloud</a>
+    <a href="https://www.youtube.com/@4ffectionless" target="_blank" rel="noopener">youtube</a>
   </footer>
+
+  <script>
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const email = e.target.querySelector('input[type="email"]').value;
+      // Placeholder — replace with Buttondown or Listmonk endpoint
+      alert('Thanks! Newsletter integration coming soon.');
+      e.target.reset();
+      return false;
+    }
+  </script>
 
 </body>
 </html>
