@@ -44,12 +44,9 @@
       flex-shrink: 0;
     }
 
-    .title {
-      font-weight: 300;
-      font-size: clamp(1.8rem, 4vw, 3.5rem);
-      letter-spacing: 0.15em;
-      text-transform: lowercase;
-      color: #fff;
+    .header-logo {
+      height: clamp(30px, 5vh, 60px);
+      width: auto;
     }
 
     .albums {
@@ -62,11 +59,12 @@
       align-content: center;
     }
 
-    .album a {
+    .album a, .album .coming-soon-wrap {
       display: block;
       width: 100%;
       aspect-ratio: 1;
       overflow: hidden;
+      position: relative;
     }
 
     .album img {
@@ -84,6 +82,34 @@
       filter: grayscale(0.4) contrast(1.1);
     }
 
+    .coming-soon-wrap .overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .coming-soon-wrap:hover .overlay {
+      opacity: 1;
+    }
+
+    .coming-soon-wrap:hover img {
+      opacity: 1;
+      filter: grayscale(0.4) contrast(1.1);
+    }
+
+    .overlay span {
+      font-weight: 300;
+      font-size: clamp(0.65rem, 1.2vw, 0.95rem);
+      letter-spacing: 0.2em;
+      text-transform: lowercase;
+      color: #fff;
+    }
+
     .album-title {
       margin-top: 2px;
       font-size: clamp(0.55rem, 0.9vw, 0.75rem);
@@ -94,11 +120,6 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-
-    /* 7 items in 4 cols: center last 3 by offsetting the 5th to col 2 */
-    .album:nth-child(5) {
-      grid-column-start: 2;
     }
 
     /* Navigation links */
@@ -145,6 +166,14 @@
       gap: 0;
     }
 
+    .newsletter-form label {
+      display: none;
+    }
+
+    .newsletter-form p {
+      display: none;
+    }
+
     .newsletter-form input[type="email"] {
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.2);
@@ -168,7 +197,7 @@
       background: rgba(255, 255, 255, 0.12);
     }
 
-    .newsletter-form button {
+    .newsletter-form input[type="submit"] {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: rgba(255, 255, 255, 0.6);
@@ -180,7 +209,7 @@
       transition: all 0.3s ease;
     }
 
-    .newsletter-form button:hover {
+    .newsletter-form input[type="submit"]:hover {
       background: rgba(255, 255, 255, 0.2);
       color: #fff;
     }
@@ -189,7 +218,7 @@
     footer {
       display: flex;
       justify-content: center;
-      gap: clamp(16px, 3vw, 36px);
+      gap: clamp(12px, 2.5vw, 32px);
       padding: 0.5vh 4vw 1.5vh;
       flex-shrink: 0;
       flex-wrap: wrap;
@@ -198,7 +227,7 @@
     footer a {
       color: rgba(255, 255, 255, 0.5);
       text-decoration: none;
-      font-size: clamp(0.7rem, 0.9vw, 0.85rem);
+      font-size: clamp(0.65rem, 0.85vw, 0.8rem);
       font-weight: 400;
       letter-spacing: 0.12em;
       text-transform: lowercase;
@@ -220,19 +249,8 @@
         gap: 8px;
       }
 
-      .album:nth-child(5) {
-        grid-column-start: auto;
-      }
-
-      /* center last item in 2-col layout */
-      .album:nth-child(7) {
-        grid-column: 1 / -1;
-        max-width: 22vh;
-        justify-self: center;
-      }
-
       .nav-links, footer {
-        gap: 16px;
+        gap: 14px;
         padding-left: 5vw;
         padding-right: 5vw;
       }
@@ -246,90 +264,95 @@
 <body>
 
   <header>
-    <span class="title">4ffection</span>
+    <img class="header-logo" src="header-logo.png" alt="4ffection">
   </header>
 
   <section class="albums">
     <div class="album">
-      <a href="https://soundcloud.com/4ffectionless/sets/synthetic" target="_blank" rel="noopener">
+      <a href="https://soundcloud.com/4ffection1/sets/synthetic" target="_blank" rel="noopener">
         <img src="SYNTHETIC%20%E2%98%BE%20%E0%BE%80%E0%BD%B2.jpg" alt="SYNTHETIC">
       </a>
       <div class="album-title">SYNTHETIC</div>
     </div>
 
     <div class="album">
-      <a href="https://soundcloud.com/4ffectionless/psychotic-diary-demos" target="_blank" rel="noopener">
+      <a href="https://soundcloud.com/4ffection1/psychotic-diary-demos" target="_blank" rel="noopener">
         <img src="Psychotic%20Diary%20%28demos%29%20%E2%AA%A9%E0%B7%86%E2%AA%A8%20%E1%B5%89%E1%B5%96%20-%204ffection-artwork.jpg" alt="Psychotic Diary">
       </a>
       <div class="album-title">Psychotic Diary (demos)</div>
     </div>
 
     <div class="album">
-      <a href="https://soundcloud.com/4ffectionless/sets/stjarna" target="_blank" rel="noopener">
+      <a href="https://soundcloud.com/4ffection1/sets/stjarna" target="_blank" rel="noopener">
         <img src="stj%C3%A4rna%20%E2%98%86._%E2%82%8A%E2%80%A7%E2%81%BA%CB%96%E2%8B%86%E2%82%8A%CB%9A%CA%9A.jpg" alt="stjärna">
       </a>
       <div class="album-title">stjärna</div>
     </div>
 
     <div class="album">
-      <a href="https://soundcloud.com/4ffectionless/sets/551b498c-c0ab-4f9d-96f2-71546d36bf21" target="_blank" rel="noopener">
+      <a href="https://soundcloud.com/4ffection1/sets/551b498c-c0ab-4f9d-96f2-71546d36bf21" target="_blank" rel="noopener">
         <img src="All%20flesh%20rots%2C%20%EA%92%B0%E0%A6%8C%E2%99%A1.jpg" alt="All flesh rots,">
       </a>
       <div class="album-title">All flesh rots,</div>
     </div>
 
     <div class="album">
-      <a href="https://soundcloud.com/4ffectionless/sets/limerence" target="_blank" rel="noopener">
+      <a href="https://soundcloud.com/4ffection1/sets/limerence" target="_blank" rel="noopener">
         <img src="limerence%20%E2%99%A1%20%28prod.%20AQUILOTTO%29.jpg" alt="limerence">
       </a>
       <div class="album-title">limerence</div>
     </div>
 
     <div class="album">
-      <a href="https://soundcloud.com/4ffectionless/sets/a-tender-kind-of-insanity" target="_blank" rel="noopener">
+      <a href="https://soundcloud.com/4ffection1/sets/a-tender-kind-of-insanity" target="_blank" rel="noopener">
         <img src="a%20tender%20kind%20of%20insanity.jpg" alt="a tender kind of insanity">
       </a>
       <div class="album-title">a tender kind of insanity</div>
     </div>
 
     <div class="album">
-      <a href="https://soundcloud.com/4ffectionless/sets/la-pluie-cessera-quand-tu-souriras-a-nouveau-prod-vanda" target="_blank" rel="noopener">
+      <a href="https://soundcloud.com/4ffection1/sets/la-pluie-cessera-quand-tu-souriras-a-nouveau-prod-vanda" target="_blank" rel="noopener">
         <img src="la%20pluie%20cessera%20quand%20tu%20souriras%20%C3%A0%20nouveau%20%28prod.%20v%C3%A5nda%29.jpg" alt="la pluie cessera">
       </a>
       <div class="album-title">la pluie cessera quand tu souriras à nouveau</div>
+    </div>
+
+    <div class="album">
+      <div class="coming-soon-wrap">
+        <img src="hymns%20cover%20v1.png" alt="hymns in a frozen wilderness">
+        <div class="overlay"><span>coming soon</span></div>
+      </div>
+      <div class="album-title">hymns in a frozen wilderness</div>
     </div>
   </section>
 
   <nav class="nav-links">
     <a href="tour.html">tour dates</a>
-    <a href="mailto:eversince2222@gmail.com">booking</a>
+    <a href="mailto:mgmt@4ffection.baby">booking</a>
   </nav>
 
   <div class="newsletter">
     <div class="newsletter-label">stay in touch</div>
-    <form class="newsletter-form" onsubmit="return handleSubscribe(event)">
-      <input type="email" placeholder="your email" required>
-      <button type="submit">subscribe</button>
+    <form
+      action="https://buttondown.com/api/emails/embed-subscribe/4ffection"
+      method="post"
+      class="newsletter-form embeddable-buttondown-form"
+    >
+      <label for="bd-email">Enter your email</label>
+      <input type="email" name="email" id="bd-email" placeholder="your email" required>
+      <input type="submit" value="subscribe">
+      <p><a href="https://buttondown.com/refer/4ffection" target="_blank">Powered by Buttondown.</a></p>
     </form>
   </div>
 
   <footer>
-    <a href="https://instagram.com/l4motrigine" target="_blank" rel="noopener">instagram</a>
-    <a href="https://tiktok.com/@4ffectionless" target="_blank" rel="noopener">tiktok</a>
-    <a href="https://www.soundcloud.com/4ffectionless" target="_blank" rel="noopener">soundcloud</a>
-    <a href="https://www.youtube.com/@4ffectionless" target="_blank" rel="noopener">youtube</a>
+    <a href="https://x.com/eversince222" target="_blank" rel="noopener">twitter</a>
+    <a href="https://www.instagram.com/_4ffection/" target="_blank" rel="noopener">instagram</a>
+    <a href="https://www.tiktok.com/@_4ffection" target="_blank" rel="noopener">tiktok</a>
+    <a href="https://soundcloud.com/4ffection1" target="_blank" rel="noopener">soundcloud</a>
+    <a href="https://www.youtube.com/@4ffection1" target="_blank" rel="noopener">youtube</a>
+    <a href="https://open.spotify.com/artist/1llZ0ibk9ayEqzcyFMLT8j?si=i-KMghs6QOO_25rJw19llA&nd=1&dlsi=f249b8dfcb344439" target="_blank" rel="noopener">spotify</a>
   </footer>
-
-  <script>
-    function handleSubscribe(e) {
-      e.preventDefault();
-      const email = e.target.querySelector('input[type="email"]').value;
-      // Placeholder — replace with Buttondown or Listmonk endpoint
-      alert('Thanks! Newsletter integration coming soon.');
-      e.target.reset();
-      return false;
-    }
-  </script>
 
 </body>
 </html>
