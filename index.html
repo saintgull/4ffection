@@ -354,5 +354,16 @@
     <a href="https://open.spotify.com/artist/1llZ0ibk9ayEqzcyFMLT8j?si=i-KMghs6QOO_25rJw19llA&nd=1&dlsi=f249b8dfcb344439" target="_blank" rel="noopener">spotify</a>
   </footer>
 
+  <audio id="hover-sound" src="hover-sound.mp3" preload="auto"></audio>
+  <script>
+    const sound = document.getElementById('hover-sound');
+    document.querySelectorAll('.album').forEach(album => {
+      album.addEventListener('mouseenter', () => {
+        sound.currentTime = 0;
+        sound.play().catch(() => {});
+      });
+    });
+  </script>
+
 </body>
 </html>
